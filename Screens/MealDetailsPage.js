@@ -1,24 +1,33 @@
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
-import { MEALS } from "../data/test-data";
-import MealDetails from "../components/MealDetails";
-import Subtitle from "../components/MealDetails/subtitle";
-import List from "../components/MealDetails/List";
 import { useLayoutEffect } from "react";
 import Button from "../components/Button";
-import { useFavourite } from "../store/context/FavouriteContext";
+import { MEALS } from "../data/test-data";
+import List from "../components/MealDetails/List";
+import MealDetails from "../components/MealDetails";
+import { useDispatch, useSelector } from "react-redux";
+import Subtitle from "../components/MealDetails/subtitle";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+
+import {
+  addToFavouriteMeals,
+  deleteFromFavouriteMeals,
+} from "../store/redux/favouriteSlice";
 
 function MealDetailsPage({ route, navigation }) {
   const { id } = route.params;
 
-  const { ids, addFavourite, removeFavourite } = useFavourite();
+  // const { ids, addFavourite, removeFavourite } = useFavourite();
+
+  const ids = useSelector((state) => state.favourite.ids);
+
+  const dispatch = useDispatch();
 
   const mealIsFavoiurite = ids?.includes(id);
 
   const handleClickHeaderButton = () => {
     if (mealIsFavoiurite) {
-      removeFavourite(id);
+      dispatch(deleteFromFavouriteMeals({ id }));
     } else {
-      addFavourite(id);
+      dispatch(addToFavouriteMeals({ id }));
     }
   };
 
