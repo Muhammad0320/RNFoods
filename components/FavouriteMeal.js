@@ -2,9 +2,12 @@ import { StyleSheet, Text, View } from "react-native";
 import MealsList from "./MealList/MealsList";
 import { MEALS } from "../data/test-data";
 import { useFavourite } from "../store/context/FavouriteContext";
+import { useSelector } from "react-redux";
 
 function FavouriteMeal() {
-  const { ids } = useFavourite();
+  //   const { ids } = useFavourite();
+
+  const { ids } = useSelector((state) => state.favourite);
 
   const currentMeals = MEALS.filter((meal) => ids.includes(meal.id));
 
