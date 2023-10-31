@@ -13,6 +13,8 @@ import FavouriteMeal from "./components/FavouriteMeal";
 
 import { Ionicons } from "@expo/vector-icons";
 import FavouriteContextProvider from "./store/context/FavouriteContext";
+import { Provider } from "react-redux";
+import { store } from "./store/redux/store";
 
 const Stack = createNativeStackNavigator();
 
@@ -59,7 +61,7 @@ export default function App() {
 
   return (
     <>
-      <FavouriteContextProvider>
+      <Provider store={store}>
         <StatusBar style="light" />
 
         <NavigationContainer>
@@ -82,7 +84,7 @@ export default function App() {
             <Stack.Screen name="MealDetailPage" component={MealDetailsPage} />
           </Stack.Navigator>
         </NavigationContainer>
-      </FavouriteContextProvider>
+      </Provider>
     </>
   );
 }
