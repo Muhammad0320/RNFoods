@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "RNFoods",
+    "name": "My RN Recipe Project",
     "slug": "RNFoods",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -14,12 +14,14 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#ffffff",
+        "versionCode": 1
       }
     },
     "web": {
